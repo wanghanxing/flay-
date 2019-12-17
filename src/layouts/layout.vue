@@ -88,7 +88,7 @@
             </template>
             <el-menu-item
               @click="submenuselect"
-              :index="item.path+'/'+newitem.path"
+              :index="item.path+newitem.path"
               v-for="(newitem,index) in item.children"
               :key="index"
               router
@@ -296,6 +296,7 @@ export default {
   width: 100%;
   height: 100%;
   // background-color: #ebf1f6;
+  overflow: hidden;
   .el-dropdown {
     color: #000;
   }
@@ -349,7 +350,7 @@ export default {
   }
   // 侧边栏
   .layout-menu {
-    height: 80%;
+    height: 85%;
     width: 100%;
     display: flex;
     .el-menu {

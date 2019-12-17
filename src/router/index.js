@@ -22,8 +22,8 @@ export default new Router({
       }
     },
     {
-      path: '/home',
-      redirect: '/home/test-pageone',
+      path: '/',
+      // redirect: '/home/test-pageone',
       name: 'home-page',
       component: homePage,
       meta: {

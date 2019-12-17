@@ -6,7 +6,7 @@
         <li v-for="n in 10" :key="n"></li>
       </ul>
     </div>
-    <div class="logn-title rainbow">
+    <div class="logn-title">
       <span>
         A BOLD ATTEMPT IS HALF SUCCESS。
         —— DEER
@@ -34,14 +34,14 @@
       </div>
     </div>
     <div class="logn-btn">
-      <el-button type="text" class="rainbow">忘记密码</el-button>
-      <el-button type="text" class="rainbow">注册用户</el-button>
+      <el-button type="text">忘记密码</el-button>
+      <el-button type="text">注册用户</el-button>
     </div>
     <div class="logn-quick-selection">
       <el-button type="info" @click="lognQuickSelection">快速选择用户</el-button>
     </div>
     <div class="logn-tips">
-      <p class="rainbow">
+      <p>
         <el-button type="text">帮助</el-button>
         <el-button type="text">隐私</el-button>
         <el-button type="text">条款</el-button>
@@ -387,7 +387,7 @@ export default {
     text-transform: uppercase;
 
     span {
-      animation: rainbow 20s alternate infinite forwards;
+      animation: rainbow 15s alternate infinite forwards;
     }
   }
 
