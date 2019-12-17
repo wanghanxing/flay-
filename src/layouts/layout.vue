@@ -57,6 +57,7 @@
       <span>
         <el-dropdown>
           <span class="el-dropdown-link">
+            <i class="el-icon-user-solid"></i>
             {{accountName}}你好
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -373,10 +374,10 @@ export default {
       }
       .el-tabs--border-card > .el-tabs__header {
         background-color: rgba(235, 241, 246, 0.4);
-        border-color: #959697;
+        border-color: #ccc;
       }
       .el-tabs--border-card {
-        border-color: #919597;
+        border-color: #ccc;
       }
       .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
         background-color: rgba(235, 241, 246, 0.4);
@@ -405,7 +406,7 @@ export default {
         padding: 0;
         .text {
           padding: 20px 0;
-          border-bottom: 1px solid #abaeb1;
+          border-bottom: 1px solid #ccc;
         }
       }
     }

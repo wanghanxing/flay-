@@ -1,6 +1,6 @@
 <template>
   <div class="test-pagetwo">
-    <el-table :data="tableData">
+    <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)">
       <el-table-column prop="date" label="日期"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
       <el-table-column prop="province" label="省份"></el-table-column>
@@ -14,6 +14,17 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize"
+        layout="sizes, prev, pager, next"
+        :total="currentTotal"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -23,12 +34,71 @@ export default {
   methods: {
     handleClick(row) {
       console.log(row);
+    },
+    handleSizeChange(val) {
+      this.pageSize = val;
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      console.log(`当前页: ${val}`);
     }
   },
 
   data() {
     return {
+      currentPage: 1,
+      pageSize: 30,
+      currentTotal: 0,
       tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市",
+          zip: 200333
+        },
         {
           date: "2016-05-02",
           name: "王小虎",
@@ -54,18 +124,16 @@ export default {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
 
-    th{
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-
-    }
-     tr {
+    th {
       background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-
+      border: none;
     }
-    td{
-      border:none;
+    tr {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+    }
+    td {
+      border: none;
     }
   }
 }

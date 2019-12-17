@@ -19,11 +19,33 @@
       </span>
     </div>
     <div class="broken-line-diagram">
-      <div id="myChart" :style="{width: '100%', height: '400px'}"></div>
+      <div
+        id="myChart"
+        :style="{width: '100%', height: '400px',border:'1px solid #ccc',borderRadius: '5px'}"
+      ></div>
     </div>
     <div class="statistical-chart">
       <div ref="statisticalChart" class="statistical"></div>
       <div ref="pieChart" class="statistical-right"></div>
+    </div>
+    <div class="test-pageone-bottom">
+      <div class="test-pageone-bottom-left test-pageone-bottom-content">
+        <span>
+          <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
+            <li v-for="i in 20" class="infinite-list-item" :key="i">{{i}}</li>
+          </ul>
+        </span>
+        <span>123</span>
+      </div>
+      <div class="test-pageone-bottom-right test-pageone-bottom-content">
+        <div>
+          <el-carousel :interval="4000" type="card" height="200px">
+            <el-carousel-item v-for="item in 6" :key="item">
+              <h3 class="medium">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,7 +57,9 @@ export default {
   name: "test-pageone",
   components: {},
   data() {
-    return {};
+    return {
+      count: 0
+    };
   },
   mounted() {
     this.drawLine();
@@ -43,6 +67,9 @@ export default {
     this.pChart();
   },
   methods: {
+    load() {
+      this.count += 1;
+    },
     //折线图
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
@@ -56,7 +83,6 @@ export default {
         data.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
         data2.push((Math.sin(i / 5) * (i / 5 + 10) + i / 6) * 3);
       }
-
       let option = {
         backgroundColor: "rgba(255,255,255,.3)",
         xAxis: [
@@ -179,7 +205,7 @@ export default {
           itemHeight: 12,
           data: ["预算分配（Allocated Budget）", "实际开销（Actual Spending）"],
           textStyle: {
-            color: "#fff"
+            color: "#666"
           }
         },
         radar: {
@@ -187,7 +213,7 @@ export default {
           splitNumber: 8,
           axisLine: {
             lineStyle: {
-              color: "#fff",
+              color: "#666",
               opacity: 0.2
             }
           },
@@ -260,28 +286,8 @@ export default {
             ]
           }
         ],
-        color: ["#ef4b4c", "#b1eadb"]
-        // backgroundColor: {
-        //   type: "radial",
-        //   x: 0.4,
-        //   y: 0.4,
-        //   r: 0.35,
-        //   colorStops: [
-        //     {
-        //       offset: 0,
-        //       color: "#895355" // 0% 处的颜色
-        //     },
-        //     {
-        //       offset: 0.4,
-        //       color: "#593640" // 100% 处的颜色
-        //     },
-        //     {
-        //       offset: 1,
-        //       color: "#39273d" // 100% 处的颜色
-        //     }
-        //   ],
-        //   globalCoord: false // 缺省为 false
-        // }
+        color: ["#ef4b4c", "#b1eadb"],
+        backgroundColor: "rgba(255,255,255,.3)"
       };
       statisticalChart.setOption(option);
     },
@@ -290,6 +296,7 @@ export default {
       let Chart = this.$echarts.init(this.$refs.pieChart);
       let option = {
         // backgroundColor: "#0B1837",
+        backgroundColor: "rgba(255,255,255,.3)",
         color: [
           "#EAEA26",
           "#906BF9",
@@ -537,18 +544,84 @@ export default {
     box-sizing: border-box;
     display: flex;
     .statistical {
-      width: 50%;
+      flex: 1;
       height: 200px;
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-right: 5px;
     }
     .statistical-right {
-      width: 50%;
+      flex: 1;
       height: 200px;
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-left: 5px;
+    }
+  }
+  .test-pageone-bottom {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    height: 400px;
+    box-sizing: border-box;
+    .test-pageone-bottom-left {
+      display: flex;
+      flex-direction: column;
+      margin-right: 5px;
+      span {
+        flex: 1;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgba(235, 241, 246, 0.4);
+        overflow-y: auto;
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          li {
+            border-bottom: 1ox solid #ccc;
+          }
+        }
+      }
+      span:hover {
+        transform: scale(1.01, 1.01);
+        box-shadow: 0px 0px 20px #000;
+      }
+      span:nth-child(1) {
+        margin-bottom: 20px;
+      }
+    }
+    .test-pageone-bottom-right {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: rgba(235, 241, 246, 0.4);
+      margin-left: 5px;
+      .el-carousel__item h3 {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+      }
+
+      .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+      }
+
+      .el-carousel__item:nth-child(2n + 1) {
+        background-color: #d3dce6;
+      }
+    }
+    .test-pageone-bottom-right:hover {
+      transform: scale(1.01, 1.01);
+      box-shadow: 0px 0px 20px #000;
+    }
+    .test-pageone-bottom-content {
+      text-align: center;
+      flex: 1;
     }
   }
 }
