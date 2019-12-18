@@ -197,7 +197,7 @@ export default {
       this.time = dayjs().format("HH:mm:ss");
     },
     tabClick(val) {
-      console.log(val, "!!!!!!!!!");
+      console.log(val, "!!!!!tabClick!!!!");
       // this.submenuselect(val);
     },
     //展开当前的menu
@@ -210,7 +210,7 @@ export default {
     },
     //选择侧边栏子项change
     submenuselect(val) {
-      console.log(val, "@@@@@@");
+      // console.log(val, "@@@@@@");
       let arr = this.tabpaneName.join("");
       if (arr.indexOf(this.$route.meta.name) === -1) {
         this.tabpaneName.push(this.$route.meta.name);
@@ -255,7 +255,7 @@ export default {
     },
     //日志
     loadingClick() {
-      console.log("loadingClick");
+      console.log("日志loadingClick");
       this.$message.info("无动态");
     },
     //全屏

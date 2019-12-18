@@ -1,6 +1,9 @@
 <template>
   <div class="test-pagetwo">
-    <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)">
+    <el-table
+      :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+      max-height='400px'
+    >
       <el-table-column prop="date" label="日期"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
       <el-table-column prop="province" label="省份"></el-table-column>
@@ -31,24 +34,10 @@
 <script>
 export default {
   name: "test-pagetwo",
-  methods: {
-    handleClick(row) {
-      console.log(row);
-    },
-    handleSizeChange(val) {
-      this.pageSize = val;
-      console.log(`每页 ${val} 条`);
-    },
-    handleCurrentChange(val) {
-      this.currentPage = val;
-      console.log(`当前页: ${val}`);
-    }
-  },
-
   data() {
     return {
       currentPage: 1,
-      pageSize: 30,
+      pageSize: 5,
       currentTotal: 0,
       tableData: [
         {
@@ -109,6 +98,19 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    handleClick(row) {
+      console.log(row);
+    },
+    handleSizeChange(val) {
+      this.pageSize = val;
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      console.log(`当前页: ${val}`);
+    }
   }
 };
 </script>
@@ -116,8 +118,8 @@ export default {
 <style lang='scss'>
 .test-pagetwo {
   width: 100%;
-  height: 100%;
-  overflow-x: auto;
+  height: 90%;
+  overflow:hidden;
   .el-table {
     width: 100%;
     margin-top: 20px;

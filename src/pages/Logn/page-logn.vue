@@ -139,20 +139,6 @@ export default {
         }
       }
       console.log(result);
-      // var obj = {};
-      // arr = arr.reduce(function(item, next) {
-      //  obj[next.key] ? '' : obj[next.key] = true && item.push(next);
-      //  return item;
-      // }, []);
-      // console.log(arr);
-      // let objName = {};
-      // let arr = []
-      // if (this.userInfo.length > 1) {
-      //   for (let i = 0; i < this.userInfo.length; i++) {
-      //     objName.push(this.userInfo[i].accountName);
-      //   }
-      //   arr = [...new Set(objName)]
-      // }
       this.userInfo.push(obj);
       localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
       this.$router.push({ name: "home-page" });
