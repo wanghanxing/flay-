@@ -19,10 +19,7 @@
       </span>
     </div>
     <div class="broken-line-diagram">
-      <div
-        id="myChart"
-        :style="{width: '100%', height: '400px',border:'1px solid #ccc',borderRadius: '5px'}"
-      ></div>
+      <div id="myChart" class="myChartLast"></div>
     </div>
     <div class="statistical-chart">
       <div ref="statisticalChart" class="statistical"></div>
@@ -39,11 +36,12 @@
       </div>
       <div class="test-pageone-bottom-right test-pageone-bottom-content">
         <div>
-          <el-carousel :interval="4000" type="card" height="200px">
-            <el-carousel-item v-for="item in 6" :key="item">
-              <h3 class="medium">{{ item }}</h3>
+          <el-carousel :interval="4000" type="card" height="150px">
+            <el-carousel-item v-for="(item,index) in imgHeaders" :key="index">
+              <img :src="item.src" alt />
             </el-carousel-item>
           </el-carousel>
+          <span>A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS</span>
         </div>
       </div>
     </div>
@@ -58,7 +56,41 @@ export default {
   components: {},
   data() {
     return {
-      count: 0
+      count: 0,
+      imgHeaders: [
+        {
+          src:
+            "http://imgsrc.baidu.com/forum/w=580/sign=ea715970798b4710ce2ffdc4f3cfc3b2/898ea9014c086e064d459e1a09087bf40bd1cb8d.jpg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201511/13/20151113110434_kyReJ.jpeg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201608/21/20160821194924_UCvFZ.jpeg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"
+        },
+        {
+          src:
+            "http://pic3.zhimg.com/50/v2-ed3df8233f628be769436ffed300a917_hd.jpg"
+        },
+        {
+          src:
+            "http://pic2.zhimg.com/50/v2-1c3bd9fe6c6a28c5ca3a678549dfde28_hd.jpg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201509/21/20150921173512_PehaH.jpeg"
+        },
+        {
+          src:
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
+        }
+      ]
     };
   },
   mounted() {
@@ -537,6 +569,12 @@ export default {
   .broken-line-diagram {
     width: 100%;
     margin: 20px 0;
+    .myChartLast {
+      width: 100%;
+      height: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   }
   .statistical-chart {
     width: 100%;
@@ -599,6 +637,8 @@ export default {
       padding: 10px;
       background-color: rgba(235, 241, 246, 0.4);
       margin-left: 5px;
+      font-size: 12px;
+      color: #666;
       .el-carousel__item h3 {
         color: #475669;
         font-size: 14px;
@@ -606,13 +646,14 @@ export default {
         line-height: 200px;
         margin: 0;
       }
-
       .el-carousel__item:nth-child(2n) {
         background-color: #99a9bf;
       }
-
       .el-carousel__item:nth-child(2n + 1) {
         background-color: #d3dce6;
+      }
+      img {
+        height: 100%;
       }
     }
     .test-pageone-bottom-right:hover {

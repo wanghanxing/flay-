@@ -57,7 +57,9 @@
       <span>
         <el-dropdown>
           <span class="el-dropdown-link">
-            <i class="el-icon-user-solid"></i>
+            <span class="el-dropdown-link-img">
+              <img :src="headerImgs" alt />
+            </span>
             {{accountName}}你好
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -136,6 +138,7 @@ export default {
       dialogVisible: false,
       searchClickText: "",
       accountName: "",
+      headerImgs: "",
       menuList: [],
       menuListchd: [],
       tabpaneList: [],
@@ -176,6 +179,9 @@ export default {
     }
   },
   created() {
+    if (JSON.parse(localStorage.getItem("headerImgs"))) {
+      this.headerImgs = JSON.parse(localStorage.getItem("headerImgs"));
+    }
     this.init();
   },
   mounted() {
@@ -409,6 +415,13 @@ export default {
           border-bottom: 1px solid #ccc;
         }
       }
+    }
+  }
+  .el-dropdown-link-img{
+    margin: 0 5px;
+    img{
+      width: 20px;
+      border-radius: 50%;
     }
   }
 }

@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/',
-      // redirect: '/home/test-pageone',
+      redirect: '/test-pageone',
       name: 'home-page',
       component: homePage,
       meta: {

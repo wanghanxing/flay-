@@ -12,6 +12,22 @@
         —— DEER
       </span>
     </div>
+    <div class="head-portrait">
+      <span @click="headPortrait" class="head-portrait-lastimg">
+        <i class="el-icon-plus icon-plus" v-if="!headerImgs"></i>
+        <img :src="headerImgs" alt v-else />
+      </span>
+      <el-dialog title="选择头像" :visible.sync="imgdialogVisible" width="30%">
+        <span
+          class="head-portrait-dialog"
+          v-for="(item,index) in imgHeaders"
+          :key="index"
+          @click="headimgClick(index,item.src)"
+        >
+          <img :src="item.src" alt />
+        </span>
+      </el-dialog>
+    </div>
     <div class="logn-land">
       <div class="logn-land-content">
         <el-input placeholder="请输入内容" v-model="account">
@@ -67,8 +83,44 @@ export default {
   name: "page-logn",
   data() {
     return {
+      imgdialogVisible: false,
       account: "", //账户
       password: "", //密码
+      imgHeaders: [
+        {
+          src:
+            "http://imgsrc.baidu.com/forum/w=580/sign=ea715970798b4710ce2ffdc4f3cfc3b2/898ea9014c086e064d459e1a09087bf40bd1cb8d.jpg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201511/13/20151113110434_kyReJ.jpeg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201608/21/20160821194924_UCvFZ.jpeg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"
+        },
+        {
+          src:
+            "http://pic3.zhimg.com/50/v2-ed3df8233f628be769436ffed300a917_hd.jpg"
+        },
+        {
+          src:
+            "http://pic2.zhimg.com/50/v2-1c3bd9fe6c6a28c5ca3a678549dfde28_hd.jpg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201509/21/20150921173512_PehaH.jpeg"
+        },
+        {
+          src:
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
+        }
+      ],
+      headerImgs: "",
       verificationCode: "AFCR", //验证码
       accountName: "临时账户",
       time: dayjs().format("HH:mm:ss"),
@@ -94,10 +146,10 @@ export default {
     };
   },
   created() {
-    // if (JSON.parse(localStorage.getItem("userInfo"))) {
-    //   this.account = JSON.parse(localStorage.getItem("userInfo"))[0].account;
-    //   this.password = JSON.parse(localStorage.getItem("userInfo"))[0].password;
-    // }
+    if (JSON.parse(localStorage.getItem("headerImgs"))) {
+      console.log(JSON.parse(localStorage.getItem("headerImgs")), "!!!!!!!!!");
+      this.headerImgs = JSON.parse(localStorage.getItem("headerImgs"));
+    }
   },
   mounted() {
     this.settime = setInterval(() => {
@@ -105,6 +157,19 @@ export default {
     }, 1000);
   },
   methods: {
+    //头像选择弹窗
+    headPortrait() {
+      this.imgdialogVisible = true;
+    },
+    // 选择头像 保存到本地
+    headimgClick(index, val) {
+      if (val) {
+        this.$set(this, "headerImgs", val);
+        this.imgdialogVisible = false;
+        localStorage.setItem("headerImgs", JSON.stringify(this.headerImgs));
+      }
+    },
+    //处理背景时间
     times() {
       this.time = dayjs().format("HH:mm:ss");
     },
@@ -271,6 +336,41 @@ export default {
       color: #bcbcbd !important;
     }
   }
+  .head-portrait {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+    border: 1px dashed #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    .head-portrait-lastimg {
+      img {
+        width: 100%;
+      }
+    }
+    .icon-plus {
+      font-size: 20px;
+      color: #ccc;
+    }
+    .el-dialog__body {
+      padding: 10px;
+    }
+    .head-portrait-dialog {
+      margin: 3px;
+      img {
+        width: 50px;
+        opacity: 0.8;
+      }
+      img:hover {
+        transform: scale(1.2, 1.2);
+        opacity: 1;
+      }
+    }
+  }
+
   .logn-land {
     display: inline-block;
     width: 280px;
@@ -383,6 +483,9 @@ export default {
         color: hsl(random(360%), 75, 75);
       }
     }
+  }
+  .el-dialog__wrapper {
+    z-index: 20001 !important;
   }
 }
 </style>
