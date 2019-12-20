@@ -590,6 +590,7 @@ export default {
     display: flex;
     .statistical {
       flex: 1;
+      width: 50%;
       height: 200px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -598,6 +599,7 @@ export default {
     }
     .statistical-right {
       flex: 1;
+      width: 50%;;
       height: 200px;
       border: 1px solid #ccc;
       border-radius: 5px;

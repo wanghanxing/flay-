@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
@@ -14,6 +16,8 @@ export default {
     }
     if (JSON.parse(localStorage.getItem("userInfo"))) {
       this.$router.push({ name: "home-page" });
+    } else {
+      this.$router.push({ name: "page-logn" });
     }
     if (JSON.parse(localStorage.getItem("metaNmae"))) {
       this.$router.push({ path: JSON.parse(localStorage.getItem("metaNmae")) });

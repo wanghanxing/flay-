@@ -19,11 +19,11 @@
       <span>
         <el-dropdown>
           <span class="el-dropdown-link el-icon-folder">
-            演示页面
+            演示
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-plus">当前页</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-plus">当前</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </span>
@@ -367,6 +367,7 @@ export default {
       .el-color-picker__trigger {
         width: 35px;
         height: 35px;
+        margin: 0 5px;
       }
     }
     span:nth-child(7) {
@@ -437,8 +438,10 @@ export default {
       }
     }
   }
+  //账户头像
   .el-dropdown-link-img {
-    margin: 0 5px;
+    position: relative;
+    top: 5px;
     img {
       width: 20px;
       border-radius: 50%;
