@@ -18,7 +18,7 @@
         <i class="classification-centent">Total analysis and statistics</i>
       </span>
     </div>
-    <div class="broken-line-diagram">
+    <div class="broken-line-diagram" ref="myChartfather">
       <div id="myChart" class="myChartLast"></div>
     </div>
     <div class="statistical-chart">
@@ -63,6 +63,9 @@ export default {
   data() {
     return {
       count: 0,
+      myChart: {},
+      statisticalChart: {},
+      Chart: {},
       imgHeaders: [
         {
           src:
@@ -99,10 +102,20 @@ export default {
       ]
     };
   },
+  created() {
+    this.$nextTick(() => {
+      this.drawLine();
+      this.statistical();
+      this.pChart();
+    });
+  },
   mounted() {
-    this.drawLine();
-    this.statistical();
-    this.pChart();
+    let _this = this;
+    window.onresize = function() {
+      _this.myChart.resize();
+      _this.statisticalChart.resize();
+      _this.Chart.resize();
+    };
   },
   methods: {
     load() {
@@ -111,7 +124,7 @@ export default {
     //折线图
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
-      let myChart = this.$echarts.init(document.getElementById("myChart"));
+      this.myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
       var xAxisData = [];
       var data = [];
@@ -227,11 +240,11 @@ export default {
           return idx * 20;
         }
       };
-      myChart.setOption(option);
+      this.myChart.setOption(option);
     },
     //雷达图
     statistical() {
-      let statisticalChart = this.$echarts.init(this.$refs.statisticalChart);
+      this.statisticalChart = this.$echarts.init(this.$refs.statisticalChart);
       let option = {
         title: {
           text: ""
@@ -327,11 +340,11 @@ export default {
         color: ["#ef4b4c", "#b1eadb"],
         backgroundColor: "rgba(255,255,255,.3)"
       };
-      statisticalChart.setOption(option);
+      this.statisticalChart.setOption(option);
     },
     //饼图
     pChart() {
-      let Chart = this.$echarts.init(this.$refs.pieChart);
+      this.Chart = this.$echarts.init(this.$refs.pieChart);
       let option = {
         // backgroundColor: "#0B1837",
         backgroundColor: "rgba(255,255,255,.3)",
@@ -533,7 +546,7 @@ export default {
           }
         ]
       };
-      Chart.setOption(option);
+      this.Chart.setOption(option);
     }
   }
 };
@@ -599,7 +612,7 @@ export default {
     }
     .statistical-right {
       flex: 1;
-      width: 50%;;
+      width: 50%;
       height: 200px;
       border: 1px solid #ccc;
       border-radius: 5px;
