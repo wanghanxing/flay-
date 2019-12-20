@@ -4,6 +4,8 @@ import pageLogn from '../pages/Logn/page-logn'
 import homePage from '../pages/Index/home-page'
 import testPageone from '../pages/menu1/test-pageone.vue'
 import testPagetwo from '../pages/menu1/test-pagetwo.vue';
+import lastPage from '../pages/menu2/last-pageone.vue';
+import layOut from '../pages/layout/layout.vue';
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(error => error)
@@ -23,7 +25,6 @@ export default new Router({
     {
       path: '/',
       redirect: '/test-pageone',
-      name: 'home-page',
       component: homePage,
       meta: {
         name: '首页'
@@ -47,5 +48,24 @@ export default new Router({
         }
       ]
     },
+    // {
+    //   path: '/last',
+    //   redirect: '/last-pageone',
+    //   component: homePage,
+    //   meta: {
+    //     name: '次页'
+    //   },
+    //   children: [
+    //     {
+    //       path: '/last-pageone',
+    //       name: 'last-pageone',
+    //       component: lastPage,
+    //       meta: {
+    //         name: '次页one'
+    //       }
+    //     }
+
+    //   ]
+    // }
   ]
 })

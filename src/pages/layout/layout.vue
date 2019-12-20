@@ -8,14 +8,10 @@
 <script>
 import layout from "../../layouts/layout";
 export default {
-  name: "home-page",
+  name: "layout",
   components: {
     layout
-  },
-  data() {
-    return {};
-  },
-  created() {}
+  }
 };
 </script>
 

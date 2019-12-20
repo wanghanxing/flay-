@@ -110,11 +110,11 @@ export default {
     });
   },
   mounted() {
-    let _this = this;
+    let that = this;
     window.onresize = function() {
-      _this.myChart.resize();
-      _this.statisticalChart.resize();
-      _this.Chart.resize();
+      that.myChart.resize();
+      that.statisticalChart.resize();
+      that.Chart.resize();
     };
   },
   methods: {
