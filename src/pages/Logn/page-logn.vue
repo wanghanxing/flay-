@@ -356,7 +356,7 @@ export default {
     line-height: 50px;
     margin: 0 auto;
     position: relative;
-    top: 50px;
+    top: 30px;
     border: 1px dashed #ccc;
     border-radius: 50%;
     overflow: hidden;
@@ -390,7 +390,7 @@ export default {
     width: 280px;
     height: 290px;
     padding: 15px;
-    margin-top: 10%;
+    margin-top: 5%;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 5px;

@@ -26,6 +26,7 @@ export default new Router({
       path: '/',
       redirect: '/test-pageone',
       component: homePage,
+      name:'home-page',
       meta: {
         name: '首页'
       },
