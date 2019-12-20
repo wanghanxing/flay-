@@ -118,6 +118,22 @@ export default {
         {
           src:
             "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
+        },
+        {
+          src:
+            "http://cdn.duitang.com/uploads/item/201411/23/20141123144736_2ntsu.thumb.700_0.jpeg"
+        },
+        {
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201410/20/20141020224133_Ur54c.jpeg"
+        },
+        {
+          src:
+            "http://img3.duitang.com/uploads/item/201606/07/20160607191023_isxzV.jpeg"
+        },
+        {
+          src:
+            "http://cdn.duitang.com/uploads/item/201410/02/20141002202633_52c4N.jpeg"
         }
       ],
       headerImgs: "",
@@ -147,7 +163,6 @@ export default {
   },
   created() {
     if (JSON.parse(localStorage.getItem("headerImgs"))) {
-      console.log(JSON.parse(localStorage.getItem("headerImgs")), "!!!!!!!!!");
       this.headerImgs = JSON.parse(localStorage.getItem("headerImgs"));
     }
   },
@@ -203,7 +218,6 @@ export default {
           newObj[this.userInfo[i].accountName] = true;
         }
       }
-      console.log(result);
       this.userInfo.push(obj);
       localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
       this.$router.push({ name: "home-page" });

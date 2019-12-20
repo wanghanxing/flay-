@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import pageLogn from '../pages/Logn/page-logn'
 import homePage from '../pages/Index/home-page'
 import testPageone from '../pages/menu1/test-pageone.vue'
@@ -35,7 +34,7 @@ export default new Router({
           name: 'test-pageone',
           component: testPageone,
           meta: {
-            name: '演示页面1'
+            name: '页面1'
           }
         },
         {
@@ -43,11 +42,10 @@ export default new Router({
           name: 'test-pagetwo',
           component: testPagetwo,
           meta: {
-            name: "演示页面2"
+            name: "页面2"
           }
         }
       ]
     },
-
   ]
 })

@@ -2,7 +2,7 @@
   <div class="test-pagetwo">
     <el-table
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-      max-height='400px'
+      max-height="400px"
     >
       <el-table-column prop="date" label="日期"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -41,7 +41,7 @@ export default {
       currentTotal: 0,
       tableData: [
         {
-          date: "2016-05-02",
+          date: "1",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -49,7 +49,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "2",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -57,7 +57,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "3",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -65,7 +65,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "4",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -73,7 +73,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "5",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -81,7 +81,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "6",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -89,7 +89,7 @@ export default {
           zip: 200333
         },
         {
-          date: "2016-05-02",
+          date: "7",
           name: "王小虎",
           province: "上海",
           city: "普陀区",
@@ -99,17 +99,23 @@ export default {
       ]
     };
   },
+  created() {
+    this.init();
+  },
   methods: {
+    init() {
+      this.currentTotal = this.tableData.length;
+    },
     handleClick(row) {
       console.log(row);
     },
+    //每页条数
     handleSizeChange(val) {
       this.pageSize = val;
-      console.log(`每页 ${val} 条`);
     },
+    //当前页
     handleCurrentChange(val) {
       this.currentPage = val;
-      console.log(`当前页: ${val}`);
     }
   }
 };
@@ -119,7 +125,7 @@ export default {
 .test-pagetwo {
   width: 100%;
   height: 90%;
-  overflow:hidden;
+  overflow: hidden;
   .el-table {
     width: 100%;
     margin-top: 20px;

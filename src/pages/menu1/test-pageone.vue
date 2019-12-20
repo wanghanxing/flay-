@@ -36,12 +36,18 @@
       </div>
       <div class="test-pageone-bottom-right test-pageone-bottom-content">
         <div>
-          <el-carousel :interval="4000" type="card" height="150px">
+          <el-carousel :interval="4000" type="card" height="220px">
             <el-carousel-item v-for="(item,index) in imgHeaders" :key="index">
               <img :src="item.src" alt />
             </el-carousel-item>
           </el-carousel>
-          <span>A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS,A BOLD ATTEMPT IS HALF SUCCESS</span>
+          <span>
+            A BOLD ATTEMPT IS HALF SUCCESS,
+            A BOLD ATTEMPT IS HALF SUCCESS,
+            A BOLD ATTEMPT IS HALF SUCCESS,
+            A BOLD ATTEMPT IS HALF SUCCESS,
+            A BOLD ATTEMPT IS HALF SUCCESS
+          </span>
         </div>
       </div>
     </div>
@@ -547,7 +553,7 @@ export default {
     span {
       flex: 1;
       border: 1px solid #5f8e8e;
-      background: #ffffff;
+      background-color: #ffffff;
       text-align: center;
       border-radius: 5px;
       box-shadow: 5px 5px 10px #666;
@@ -574,6 +580,7 @@ export default {
       height: 400px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      overflow: hidden;
     }
   }
   .statistical-chart {
@@ -587,6 +594,7 @@ export default {
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-right: 5px;
+      overflow: hidden;
     }
     .statistical-right {
       flex: 1;
@@ -594,6 +602,7 @@ export default {
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-left: 5px;
+      overflow: hidden;
     }
   }
   .test-pageone-bottom {

@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <div class="layout-header">
+    <div class="layout-header" :style="{backgroundColor:colorpicker}">
       <span class="layout-header-img">{{time}}</span>
       <span @click="retractFold">
         <i class="el-icon-s-fold"></i>
@@ -55,6 +55,11 @@
         </p>
       </span>
       <span>
+        <div class="block">
+          <el-color-picker v-model="colorpicker" @active-change="colorChange" show-alpha></el-color-picker>
+        </div>
+      </span>
+      <span>
         <el-dropdown>
           <span class="el-dropdown-link">
             <span class="el-dropdown-link-img">
@@ -69,7 +74,7 @@
         </el-dropdown>
       </span>
     </div>
-    <div class="layout-menu">
+    <div class="layout-menu" :style="{backgroundColor:colorpicker}">
       <div>
         <el-menu
           default-active="navselected"
@@ -140,6 +145,7 @@ export default {
       accountName: "",
       headerImgs: "",
       menuList: [],
+      colorpicker: "#409EFF",
       menuListchd: [],
       tabpaneList: [],
       tabpaneName: [],
@@ -182,6 +188,9 @@ export default {
     if (JSON.parse(localStorage.getItem("headerImgs"))) {
       this.headerImgs = JSON.parse(localStorage.getItem("headerImgs"));
     }
+    if (JSON.parse(localStorage.getItem("colorpicker"))) {
+      this.colorpicker = JSON.parse(localStorage.getItem("colorpicker"));
+    }
     this.init();
   },
   mounted() {
@@ -199,12 +208,16 @@ export default {
         )[0].accountName;
       }
     },
+    //获取当前选择rgba
+    colorChange(val) {
+      this.colorpicker = val;
+      localStorage.setItem("colorpicker", JSON.stringify(this.colorpicker));
+    },
     times() {
       this.time = dayjs().format("HH:mm:ss");
     },
     tabClick(val) {
       console.log(val, "!!!!!tabClick!!!!");
-      // this.submenuselect(val);
     },
     //展开当前的menu
     handleOpen(key, keyPath) {
@@ -216,7 +229,6 @@ export default {
     },
     //选择侧边栏子项change
     submenuselect(val) {
-      // console.log(val, "@@@@@@");
       let arr = this.tabpaneName.join("");
       if (arr.indexOf(this.$route.meta.name) === -1) {
         this.tabpaneName.push(this.$route.meta.name);
@@ -352,12 +364,18 @@ export default {
       }
     }
     span:nth-child(6) {
+      .el-color-picker__trigger {
+        width: 35px;
+        height: 35px;
+      }
+    }
+    span:nth-child(7) {
       margin-right: 20px;
     }
   }
   // 侧边栏
   .layout-menu {
-    height: 85%;
+    height: 100%;
     width: 100%;
     display: flex;
     .el-menu {
@@ -366,6 +384,8 @@ export default {
     .el-menu-vertical-demo:not(.el-menu--collapse) {
       width: 200px;
       min-height: 400px;
+      background-color: rgba(235, 241, 246, 0.1) !important;
+      border: none !important;
     }
     .layout-content {
       width: 100%;
@@ -417,9 +437,9 @@ export default {
       }
     }
   }
-  .el-dropdown-link-img{
+  .el-dropdown-link-img {
     margin: 0 5px;
-    img{
+    img {
       width: 20px;
       border-radius: 50%;
     }
