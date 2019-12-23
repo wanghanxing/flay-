@@ -2,9 +2,9 @@
   <el-dropdown class="colorBtn" trigger="click" @command="changeColor">
     <i class="el-icon-brush"></i>
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item command="a" @click="change_type(a)">巨人</el-dropdown-item>
-      <el-dropdown-item command="b" @click="change_type(b)">小黄人</el-dropdown-item>
-      <el-dropdown-item command="c" @click="change_type(c)">秋</el-dropdown-item>
+      <el-dropdown-item command="a" @click="change_type(a)">1</el-dropdown-item>
+      <el-dropdown-item command="b" @click="change_type(b)">2</el-dropdown-item>
+      <el-dropdown-item command="c" @click="change_type(c)">3</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
 </template>

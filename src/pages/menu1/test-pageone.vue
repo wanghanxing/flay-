@@ -69,31 +69,31 @@ export default {
       imgHeaders: [
         {
           src:
-            "http://imgsrc.baidu.com/forum/w=580/sign=ea715970798b4710ce2ffdc4f3cfc3b2/898ea9014c086e064d459e1a09087bf40bd1cb8d.jpg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://b-ssl.duitang.com/uploads/item/201511/13/20151113110434_kyReJ.jpeg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://b-ssl.duitang.com/uploads/item/201608/21/20160821194924_UCvFZ.jpeg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://pic3.zhimg.com/50/v2-ed3df8233f628be769436ffed300a917_hd.jpg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://pic2.zhimg.com/50/v2-1c3bd9fe6c6a28c5ca3a678549dfde28_hd.jpg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:
-            "http://b-ssl.duitang.com/uploads/item/201509/21/20150921173512_PehaH.jpeg"
+            "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
         },
         {
           src:

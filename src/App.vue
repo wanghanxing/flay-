@@ -106,4 +106,7 @@ body {
     color: #fff;
   }
 }
+.el-drawer__open .el-drawer.rtl {
+  width: 75% !important;
+}
 </style>

@@ -89,51 +89,7 @@ export default {
       imgHeaders: [
         {
           src:
-            "http://imgsrc.baidu.com/forum/w=580/sign=ea715970798b4710ce2ffdc4f3cfc3b2/898ea9014c086e064d459e1a09087bf40bd1cb8d.jpg"
-        },
-        {
-          src:
-            "http://b-ssl.duitang.com/uploads/item/201511/13/20151113110434_kyReJ.jpeg"
-        },
-        {
-          src:
-            "http://b-ssl.duitang.com/uploads/item/201608/21/20160821194924_UCvFZ.jpeg"
-        },
-        {
-          src:
-            "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"
-        },
-        {
-          src:
-            "http://pic3.zhimg.com/50/v2-ed3df8233f628be769436ffed300a917_hd.jpg"
-        },
-        {
-          src:
-            "http://pic2.zhimg.com/50/v2-1c3bd9fe6c6a28c5ca3a678549dfde28_hd.jpg"
-        },
-        {
-          src:
-            "http://b-ssl.duitang.com/uploads/item/201509/21/20150921173512_PehaH.jpeg"
-        },
-        {
-          src:
             "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
-        },
-        {
-          src:
-            "http://cdn.duitang.com/uploads/item/201411/23/20141123144736_2ntsu.thumb.700_0.jpeg"
-        },
-        {
-          src:
-            "http://b-ssl.duitang.com/uploads/item/201410/20/20141020224133_Ur54c.jpeg"
-        },
-        {
-          src:
-            "http://img3.duitang.com/uploads/item/201606/07/20160607191023_isxzV.jpeg"
-        },
-        {
-          src:
-            "http://cdn.duitang.com/uploads/item/201410/02/20141002202633_52c4N.jpeg"
         }
       ],
       headerImgs: "",
@@ -174,13 +130,14 @@ export default {
   methods: {
     //头像选择弹窗
     headPortrait() {
+      console.log("keadportrait");
       this.imgdialogVisible = true;
     },
     // 选择头像 保存到本地
     headimgClick(index, val) {
       if (val) {
-        this.$set(this, "headerImgs", val);
         this.imgdialogVisible = false;
+        this.$set(this, "headerImgs", val);
         localStorage.setItem("headerImgs", JSON.stringify(this.headerImgs));
       }
     },
