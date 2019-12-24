@@ -1,5 +1,6 @@
 <template>
   <div class="test-pagetwo">
+    <el-button type='success' class="exportPagetwo">导出</el-button>
     <el-table
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
       max-height="400px"
