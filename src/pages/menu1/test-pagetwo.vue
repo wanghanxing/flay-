@@ -1,7 +1,8 @@
 <template>
   <div class="test-pagetwo">
-    <el-button type='success' class="exportPagetwo">导出</el-button>
+    <el-button type="primary" class="exportPagetwo" @click="exportExcel">导出表格</el-button>
     <el-table
+      id="out-table"
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
       max-height="400px"
     >
@@ -33,6 +34,8 @@
 </template>
 
 <script>
+import FileSaver from "file-saver";
+import XLSX from "xlsx";
 export default {
   name: "test-pagetwo",
   data() {
@@ -117,6 +120,24 @@ export default {
     //当前页
     handleCurrentChange(val) {
       this.currentPage = val;
+    },
+    //导出当前列表excel下载
+    exportExcel() {
+      var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+      var wbout = XLSX.write(wb, {
+        bookType: "xlsx",
+        bookSST: true,
+        type: "array"
+      });
+      try {
+        FileSaver.saveAs(
+          new Blob([wbout], { type: "application/octet-stream" }),
+          this.$router.currentRoute.name + ".xlsx"
+        );
+      } catch (e) {
+        if (typeof console !== "undefined") console.log(e, wbout);
+      }
+      return wbout;
     }
   }
 };

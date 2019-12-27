@@ -90,6 +90,9 @@ export default {
         {
           src:
             "http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg"
+        },
+        {
+          src:'http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg'
         }
       ],
       headerImgs: "",
@@ -178,6 +181,7 @@ export default {
       this.userInfo.push(obj);
       localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
       this.$router.push({ name: "home-page" });
+      this.dialogVisible = false;
     },
     //快速选择用户
     dialogContent(val) {
